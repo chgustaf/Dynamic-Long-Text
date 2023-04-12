@@ -1,0 +1,66 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:false={isEditMode}>
+        <lightning-card title="Dynamic Fields">
+            <div class="slds-form" role="list">
+                <template for:each={mapData} for:item="mapEntry">
+                    <div class="slds-form__row" key={mapEntry.key}>
+                        <template for:each={mapEntry.values} for:item="val">
+                            <div class="slds-form__item" role="listitem" key={val.wrapperIdentifier}>
+                                <div class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                    <span class="slds-form-element__label">{val.name}</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            {val.value}
+                                        </div>
+                                        <button class="slds-button slds-button_icon" title="Edit: Field Label" onclick={handleEdit} data-name={val.wrapperIdentifier}>
+                                            <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#edit"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">Edit: {val.name}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+    <template if:true={isEditMode}>
+        <lightning-card title="Dynamic Fields">
+            <div class="slds-form" role="list">
+                <template for:each={mapData} for:item="mapEntry">
+                    <div class="slds-form__row" key={mapEntry.key}>
+                        <template for:each={mapEntry.values} for:item="val">
+                            <div class="slds-form__item" role="listitem" key={val.wrapperIdentifier} >
+                                <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                                    <label class="slds-form-element__label" for={val.wrapperIdentifier}>{val.name}</label>
+                                    <div class="slds-form-element__icon">
+                                        <button class="slds-button slds-button_icon">
+                                            <svg class="slds-button__icon" aria-hidden="true">
+                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#info"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">Help</span>
+                                        </button>
+                                    </div>
+                                    <div class="slds-form-element__control">
+                                        <input type="text" data-id={val.wrapperIdentifier} id={val.wrapperIdentifier} class="slds-input" value={val.value}/>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+            <div class="slds-m-top_medium">
+                <lightning-button-group class="slds-align_absolute-center">
+                  <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+                  <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+                </lightning-button-group>
+              </div>
+        </lightning-card>
+    </template>
+    
+</template>

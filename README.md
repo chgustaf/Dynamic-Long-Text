@@ -1,20 +1,31 @@
-[Deploy to Salesforce](https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=test)
+# Dynamic Long Text Fields
 
-# Salesforce DX Project: Next Steps
+[Deploy to Salesforce](https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=dynamic-long-text)
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Rationale
+Creating and specifying new fields can be a time-consuming process in fast-paced projects, potentially leading to inefficiencies and data quality issues. Users may struggle to keep up with changing business needs, resulting in further difficulties.
 
-## How Do You Plan to Deploy Your Changes?
+This solution provides a way to add extra data to cases, accounts, contacts, and other entities in Salesforce without creating and specifying new fields. The process is streamlined, reducing overheads and improving efficiency.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+It allows you to send fields and field data in JSON format, which is stored in text fields and seamlessly presented to Salesforce users on the record page. Users can modify the field values just like ordinary fields.
 
-## Configure Your Salesforce DX Project
+## Installation
+The default package includes the addition of Dynamic Long Text Fields to the Account object. To complete the setup process, please follow these steps:
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+1. Deploy the metadata to your organization.
+2. Configure field-level security settings to make the DynamicLongTextField__c field visible for users.
+3. Place the "dynamicLongText" component on a record page for the Account, preferably immediately below the detail page.
+4. Assign the example JSON (provided in the section below) to the DynamicLongTextField.
+5. Finally, open the record page of the account to confirm that the setup has been completed successfully.
 
-## Read All About It
+If you wish to add Dynamic Long Text Fields to other objects, follow these steps:
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+1. Deploy the metadata to your organization.
+2. Add a Long Text field to the desired object.
+3. Create a new record in the Dynamic Field Mapping custom metadata, setting the name to the API name of the object that the Long Text field was added to and the "Field API Name" to the API name of the Long Text Field.
+4. Place the "dynamicLongText" component on a record page for the object in question.
+5. Assign the example JSON (provided in the section below) to the DynamicLongTextField.
+6. Finally, open the record page of the account to confirm that the setup has been completed successfully.
+
+## Example JSON
+{"Field1":"Test","Field2":"Test Field24","Field3":"More textsdafasdf1234","Field4":"More text"}
