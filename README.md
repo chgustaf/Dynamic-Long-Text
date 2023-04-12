@@ -1,4 +1,4 @@
-[Deploy to Salesforce](https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=test)
+[Deploy to Salesforce](https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=dynamic-long-text)
 
 # Salesforce DX Project: Next Steps
 
