@@ -11,6 +11,8 @@ This solution provides a way to add extra data to cases, accounts, contacts, and
 
 It allows you to send fields and field data in JSON format, which is stored in text fields and seamlessly presented to Salesforce users on the record page. Users can modify the field values just like ordinary fields.
 
+![Alt text](/dynamicFieldsExample.png?raw=true "Dynamic Fields Example")
+
 ## Installation
 The default package includes the addition of Dynamic Long Text Fields to the Account object. To complete the setup process, please follow these steps:
 
