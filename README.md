@@ -1,6 +1,8 @@
 # Dynamic Long Text Fields
 
-[Deploy to Salesforce](https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=dynamic-long-text)
+<a href="https://githubsfdeploy.herokuapp.com?owner=chgustaf&amp;repo=dynamic-long-text">
+<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png" alt="Deploy to Salesforce" />
+</a>
 
 ## Rationale
 Creating and specifying new fields can be a time-consuming process in fast-paced projects, potentially leading to inefficiencies and data quality issues. Users may struggle to keep up with changing business needs, resulting in further difficulties.
