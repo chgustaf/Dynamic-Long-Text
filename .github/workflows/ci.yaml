@@ -14,12 +14,10 @@ jobs:
       - name: Authenticate
         run: sfdx force:auth:jwt:grant --clientid=${{ secrets.DEVHUB_CLIENT_ID }} --jwtkeyfile=server.key --username=${{ secrets.SALESFORCE_USERNAME }} --setdefaultdevhubusername
       - name: Create scratch org
-        run: "sfdx force:org:create -f config/project-scratch-def.json -a my-scratch"
+        run: sfdx force:org:create -f config/project-scratch-def.json -a my-scratch
       - name: Push source
-        run: "sfdx force:source:push -u my-scratch"
-      - name: List orgs
-        run: "sfdx force:org:list"
+        run: sfdx force:source:push -u my-scratch
       - name: Run tests
-        run: "sfdx force:apex:test:run -u my-scratch --resultformat human"
+        run: sfdx force:apex:test:run -u my-scratch --resultformat human
       - name: Delete scratch org
-        run: "sfdx force:org:delete -u my-scratch --noprompt"
+        run: sfdx force:org:delete -u my-scratch --noprompt
