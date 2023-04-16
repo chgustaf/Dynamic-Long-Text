@@ -12,12 +12,12 @@ jobs:
       - name: Copy the salesforce key into file
         run: echo "${{ secrets.SALESFORCE_PRIVATE_KEY }}" > server.key
       - name: Authenticate
-        run: sfdx force:auth:jwt:grant --clientid=${{ secrets.DEVHUB_CLIENT_ID }} --jwtkeyfile=server.key --username=${{ secrets.SALESFORCE_USERNAME }} --setdefaultdevhubusername
+        run: sfdx force:auth:jwt:grant --client-id=${{ secrets.DEVHUB_CLIENT_ID }} --jwt-key-file=server.key --username=${{ secrets.SALESFORCE_USERNAME }} --set-default-dev-hub
       - name: Create scratch org
         run: sfdx force:org:create -f config/project-scratch-def.json -a my-scratch
       - name: Push source
-        run: sfdx force:source:push -u my-scratch
+        run: sfdx project deploy start --target-org my-scratch
       - name: Run tests
-        run: sfdx force:apex:test:run -u my-scratch --resultformat human
+        run: sfdx apex test run --target-org my-scratch --result-format human
       - name: Delete scratch org
-        run: sfdx force:org:delete -u my-scratch --noprompt
+        run: sfdx org:delete:scratch --target-org my-scratch --no-prompt
