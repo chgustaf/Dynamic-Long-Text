@@ -1,6 +1,7 @@
 {
   "orgName": "christian company",
   "edition": "Developer",
+  "release": "previous",
   "features": ["EnableSetPasswordInApi"],
   "settings": {
     "lightningExperienceSettings": {
