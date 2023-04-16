@@ -19,8 +19,6 @@ jobs:
         run: sfdx project deploy start --target-org my-scratch
       - name: Run tests
         run: sfdx apex test run --target-org my-scratch --result-format human --code-coverage --detailed-coverage
-      - name: Check test results
-        run: ${{ contains(./tests/apex, 'Failed') }}
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
