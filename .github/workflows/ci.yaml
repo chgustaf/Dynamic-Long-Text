@@ -1,0 +1,31 @@
+name: Salesforce Master Branch Validation
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+
+jobs:
+    formatting-and-lwc-tests:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'Checkout source code'
+              uses: actions/checkout@v3
+
+            - name: Restore node_modules cache
+              id: cache-npm
+              uses: actions/cache@v3
+              with:
+                  path: node_modules
+                  key: npm-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      npm-${{ env.cache-name }}-
+                      npm-
+
+            - name: 'Install npm dependencies'
+              if: steps.cache-npm.outputs.cache-hit != 'true'
+              run: npm ci
+
+            - name: 'Code formatting'
+              run: npm run prettier:verify
