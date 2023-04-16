@@ -18,6 +18,6 @@ jobs:
       - name: Push source
         run: sfdx project deploy start --target-org my-scratch
       - name: Run tests
-        run: sfdx apex test run --target-org my-scratch --result-format human
+        run: sfdx apex test run --target-org my-scratch --result-format human --code-coverage --detailed-coverage
       - name: Delete scratch org
         run: sfdx org:delete:scratch --target-org my-scratch --no-prompt
