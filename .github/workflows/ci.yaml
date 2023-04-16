@@ -23,5 +23,6 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           flags: Apex
+          file: test-result-codecoverage.json
       - name: Delete scratch org
         run: sfdx org:delete:scratch --target-org my-scratch --no-prompt
